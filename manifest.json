@@ -1,0 +1,16 @@
+{
+    "manifest_version":2,
+    "name":"ssaver",
+    "version":"0",
+    "description":"speedrun saver tentativename",
+
+    "permissions":["tabs","activeTab","storage","https://www.youtube.com/watch?v=*"],
+
+    "browser_action":{
+        "default_popup":"popup/popup.html"
+    },
+
+    "web_accessible_resources":[
+        "popup/yt-hook.js"
+    ]
+}
