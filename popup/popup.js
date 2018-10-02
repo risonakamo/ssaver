@@ -1,5 +1,8 @@
 window.onload=main;
 
+var lastSaveDateElement;
+var lastSaveTimeElement;
+
 function main()
 {
     checkSite();
@@ -7,6 +10,8 @@ function main()
 
 function main2(url)
 {
+    lastSaveDateElement=document.querySelector(".last-save");
+    lastSaveTimeElement=document.querySelector(".vid-time");
     initialiseStuff(url);
     specialHover();
 
@@ -16,6 +21,7 @@ function main2(url)
         chrome.tabs.executeScript({file:"popup/yt-hook-pre.js"},()=>{
             setTimeout(()=>{
                 chrome.tabs.executeScript({file:"popup/yt-hook-final.js"},(res)=>{
+                    handleResult(res[0]);
                     console.log(res[0]);
                 });
             },50);
@@ -80,4 +86,27 @@ function initialiseStuff(url)
     var vidId=url.match(/v=(.*?)(&|$)/)[1];
 
     document.querySelector(".thumbnail").src=`https://img.youtube.com/vi/${vidId}/0.jpg`;
+
+    chrome.storage.local.get(vidId,(data)=>{
+        data=data[vidId];
+
+        if (!data)
+        {
+            return;
+        }
+
+        setLastTimes(data);
+    });
+}
+
+//given video data object, set the visual stuff for last
+//date saved and last time saved
+function setLastTimes(data)
+{
+    var thedate=new Date(data.saveDate);
+    lastSaveDateElement.innerText=`${thedate.toDateString().slice(4)} ${thedate.toTimeString().slice(0,5)}`;
+
+    var mins=Math.floor(data.currentTime/60);
+    var secs=Math.floor(data.currentTime-mins*60);
+    lastSaveTimeElement.innerText=`${mins}:${secs}`;
 }
