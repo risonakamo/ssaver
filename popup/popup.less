@@ -7,7 +7,7 @@
 body
 {
     width: 315px;
-    margin: 0 0 6px 0;
+    margin: 0;
     background-color: @background-dark;
     color: white;
     font-size: 0;
@@ -64,6 +64,41 @@ a
     .top-elements-shared();
     width: 85px;
     text-align: center;
+    transition: background-color .14s,color .14s;
+
+    /*-- stuff for hovering --*/
+    &.save
+    {
+        background-color: @main-red;
+
+        .save-button
+        {
+            color: @background-dark;
+        }
+
+        .done-button
+        {
+            color: @background-dark;
+            opacity: .5;
+        }
+    }
+
+    &.done
+    {
+        background-color: @main-green;
+
+        .save-button
+        {
+            color: @background-dark;
+            opacity: .5;
+        }
+
+        .done-button
+        {
+            color: @background-dark;
+        }
+    }
+    /*-- end stuff for hovering --*/
 
     .save-button
     {
@@ -71,24 +106,12 @@ a
         font-size: 15px;
         padding: 79px 0 75px 0;
         color: @main-red;
-        transition: background-color .2s,color .2s;
-
-        &:hover
-        {
-            background-color: @main-red;
-            color: @background-dark;
-        }
     }
 
     .done-button
     {
         .save-button();
-        padding: 23px 0 23px 0;
+        padding: 26px 0 25px 0;
         color: @main-green;
-
-        &:hover
-        {
-            background-color: @main-green;
-        }
     }
 }
