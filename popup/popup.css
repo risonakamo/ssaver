@@ -44,10 +44,26 @@ a {
   display: block;
   font-size: 15px;
   padding: 79px 0 75px 0;
+  color: #c7344e;
+  transition: background-color 0.2s, color 0.2s;
+}
+.controls .save-button:hover {
+  background-color: #c7344e;
+  color: #191919;
 }
 .controls .done-button {
   display: block;
   font-size: 15px;
   padding: 79px 0 75px 0;
+  color: #c7344e;
+  transition: background-color 0.2s, color 0.2s;
   padding: 23px 0 23px 0;
+  color: #b4d12e;
+}
+.controls .done-button:hover {
+  background-color: #c7344e;
+  color: #191919;
+}
+.controls .done-button:hover {
+  background-color: #b4d12e;
 }

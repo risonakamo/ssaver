@@ -1,10 +1,14 @@
 @charset "UTF-8";
 
+@main-red: #c7344e;
+@main-green: #b4d12e;
+@background-dark: #191919;
+
 body
 {
     width: 315px;
     margin: 0 0 6px 0;
-    background-color: #191919;
+    background-color: @background-dark;
     color: white;
     font-size: 0;
     font-family: "roboto","arial";
@@ -66,11 +70,25 @@ a
         display: block;
         font-size: 15px;
         padding: 79px 0 75px 0;
+        color: @main-red;
+        transition: background-color .2s,color .2s;
+
+        &:hover
+        {
+            background-color: @main-red;
+            color: @background-dark;
+        }
     }
 
     .done-button
     {
         .save-button();
         padding: 23px 0 23px 0;
+        color: @main-green;
+
+        &:hover
+        {
+            background-color: @main-green;
+        }
     }
 }
