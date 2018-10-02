@@ -1,7 +1,13 @@
 var player=document.querySelector("#movie_player");
+var url=player.getVideoUrl();
 
+//return object to popup. described in data formats as videoData
 window.localStorage.ssaverHookData=JSON.stringify({
-    url:player.getVideoUrl(),
-    time:Math.floor(player.getCurrentTime()),
-    duration:player.getDuration()
+    title:document.querySelector("h1.title").innerText,
+    channel:document.querySelector("#owner-name a").innerText,
+    url:url,
+    videoId:url.match(/v=(.*)/)[1],
+    currentTime:player.getCurrentTime(),
+    duration:player.getDuration(),
+    saveDate:new Date().toString()
 });

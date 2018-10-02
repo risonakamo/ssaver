@@ -1,0 +1,18 @@
+# returned from popup to be placed in storage
+type videoData
+{
+    title: string,
+    channel: string,
+    url: string,
+    videoId: string,
+
+    duration: float,
+    currentTime: float,
+
+    saveDate: datestring
+}
+
+type localStorage
+{
+    [videoData.videoId]: videoData
+}

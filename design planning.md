@@ -23,3 +23,12 @@
 - button to "done" the video
 - time it was saved
 - counter of times it was saved?
+
+### video object information
+- title
+- duration
+- url
+- current time, seperate from url
+- id for thumbnail
+- uploader
+- time updated
