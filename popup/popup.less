@@ -45,6 +45,7 @@ a
     .info-block
     {
         text-align: right;
+        padding-right: 3px;
 
         h1
         {
@@ -114,4 +115,19 @@ a
         padding: 26px 0 25px 0;
         color: @main-green;
     }
+}
+
+.bad-site,.good-site
+{
+    display: none;
+
+    &.show
+    {
+        display: block;
+    }
+}
+
+.bad-site
+{
+    font-size: 15px;
 }

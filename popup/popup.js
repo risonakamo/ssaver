@@ -2,14 +2,13 @@ window.onload=main;
 
 function main()
 {
-    specialHover();
+    checkSite();
+}
 
-    chrome.tabs.query({active:true,currentWindow:true},(tab)=>{
-        if (tab[0].url.slice(0,29)=="https://www.youtube.com/watch")
-        {
-            console.log("correct");
-        }
-    });
+function main2(url)
+{
+    initialiseStuff(url);
+    specialHover();
 
     document.querySelector(".save-button").addEventListener("click",(e)=>{
         e.preventDefault();
@@ -17,7 +16,7 @@ function main()
         chrome.tabs.executeScript({file:"popup/yt-hook-pre.js"},()=>{
             setTimeout(()=>{
                 chrome.tabs.executeScript({file:"popup/yt-hook-final.js"},(res)=>{
-                    console.log(res);
+                    console.log(res[0]);
                 });
             },50);
         });
@@ -49,4 +48,36 @@ function specialHover()
             }
         });
     });
+}
+
+//perform actions given data from yt hook
+function handleResult(res)
+{
+    chrome.storage.local.set({[res.videoId]:res});
+}
+
+//initial site check.
+function checkSite()
+{
+    chrome.tabs.query({active:true,currentWindow:true},(tab)=>{
+        if (tab[0].url.slice(0,29)=="https://www.youtube.com/watch")
+        {
+            document.querySelector(".good-site").classList.add("show");
+            main2(tab[0].url);
+        }
+
+        else
+        {
+            document.querySelector(".bad-site").classList.add("show");
+        }
+    });
+}
+
+//given url, do initialisation stuff including checking local
+//storage for if it already exists and getting that data
+function initialiseStuff(url)
+{
+    var vidId=url.match(/v=(.*?)(&|$)/)[1];
+
+    document.querySelector(".thumbnail").src=`https://img.youtube.com/vi/${vidId}/0.jpg`;
 }

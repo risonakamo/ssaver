@@ -26,6 +26,7 @@ a {
 }
 .info .info-block {
   text-align: right;
+  padding-right: 3px;
 }
 .info .info-block h1 {
   font-size: 8px;
@@ -76,4 +77,15 @@ a {
   color: #c7344e;
   padding: 26px 0 25px 0;
   color: #b4d12e;
+}
+.bad-site,
+.good-site {
+  display: none;
+}
+.bad-site.show,
+.good-site.show {
+  display: block;
+}
+.bad-site {
+  font-size: 15px;
 }
