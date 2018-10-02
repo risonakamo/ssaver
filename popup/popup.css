@@ -1,6 +1,53 @@
 @charset "UTF-8";
-
-body
-{
-    margin: 0;
+body {
+  width: 315px;
+  margin: 0 0 6px 0;
+  background-color: #191919;
+  color: white;
+  font-size: 0;
+  font-family: "roboto", "arial";
+}
+h1,
+p {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+.info {
+  display: inline-block;
+  vertical-align: top;
+  width: 230px;
+}
+.info img {
+  width: 100%;
+  margin-bottom: 4px;
+}
+.info .info-block {
+  text-align: right;
+}
+.info .info-block h1 {
+  font-size: 8px;
+  font-weight: 400;
+}
+.info .info-block p {
+  font-size: 18px;
+}
+.controls {
+  display: inline-block;
+  vertical-align: top;
+  width: 85px;
+  text-align: center;
+}
+.controls .save-button {
+  display: block;
+  font-size: 15px;
+  padding: 79px 0 75px 0;
+}
+.controls .done-button {
+  display: block;
+  font-size: 15px;
+  padding: 79px 0 75px 0;
+  padding: 23px 0 23px 0;
 }
