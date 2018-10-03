@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" type="text/css" href="popup.css">
 
+    <script src="timeago.min.js"></script>
     <script src="popup.js"></script>
   </head>
 
@@ -18,15 +19,18 @@
       <div class="info">
         <img class="thumbnail">
 
-        <div class="info-block">
-          <h1>last saved</h1>
-          <p class="last-save">never</p>
+        <div class="info-block-holder">
+          <div class="info-block date">
+            <h1>last saved</h1>
+            <p class="last-save">never</p>
+          </div>
+
+          <div class="info-block time">
+            <h1>at time</h1>
+            <p class="vid-time">none</p>
+          </div>
         </div>
 
-        <div class="info-block">
-          <h1>at time</h1>
-          <p class="vid-time">none</p>
-        </div>
       </div>
 
       <div class="controls">

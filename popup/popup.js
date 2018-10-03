@@ -107,7 +107,8 @@ function initialiseStuff(url)
 function setLastTimes(data)
 {
     var thedate=new Date(data.saveDate);
-    lastSaveDateElement.innerText=`${thedate.toDateString().slice(4)} ${thedate.toTimeString().slice(0,5)}`;
+    lastSaveDateElement.title=`${thedate.toDateString().slice(4)}, ${thedate.toTimeString().slice(0,5)}`;
+    lastSaveDateElement.innerText=timeago().format(thedate);
 
     if (data.done)
     {

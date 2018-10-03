@@ -22,18 +22,31 @@ a {
 }
 .info img {
   width: 100%;
-  margin-bottom: 4px;
 }
-.info .info-block {
-  text-align: right;
-  padding-right: 3px;
+.info .info-block-holder {
+  width: 100%;
+  padding-top: 4px;
 }
-.info .info-block h1 {
+.info .info-block-holder .info-block {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  vertical-align: top;
+}
+.info .info-block-holder .info-block.date {
+  width: 65%;
+}
+.info .info-block-holder .info-block.time {
+  width: 35%;
+}
+.info .info-block-holder .info-block h1 {
   font-size: 8px;
   font-weight: 400;
 }
-.info .info-block p {
+.info .info-block-holder .info-block p {
   font-size: 18px;
+  margin-top: 10px;
 }
 .controls {
   display: inline-block;
