@@ -2,6 +2,15 @@
 body {
   margin: 50px 0 0 0;
   background-color: #191919;
+  font-family: "roboto";
+  font-weight: 400;
+  font-size: 0;
+  color: white;
+}
+h1,
+h2 {
+  margin: 0;
+  font-weight: 400;
 }
 .video-entry {
   width: 700px;
@@ -10,4 +19,56 @@ body {
 }
 .video-entry img {
   height: 100%;
+}
+.video-entry .info {
+  display: inline-block;
+  width: 460px;
+  vertical-align: top;
+  padding: 4px 0 0 15px;
+  box-sizing: border-box;
+}
+.video-entry .info h1 {
+  font-size: 21px;
+}
+.video-entry .info h2 {
+  font-size: 12px;
+  margin-top: 10px;
+  opacity: 0.5;
+}
+.video-entry .bar {
+  width: 100%;
+}
+.video-entry .bar .now-time {
+  font-size: 10px;
+  padding-left: 20%;
+}
+.video-entry .bar .now-time span {
+  display: inline-block;
+  width: 40px;
+  margin-left: -20px;
+  text-align: center;
+}
+.video-entry .bar .the-bar {
+  height: 4px;
+  border: 1px solid white;
+  border-top: none;
+}
+.video-entry .bar .the-bar .inside {
+  border-bottom: 4px solid #c7344e;
+  width: 20%;
+}
+.video-entry .bar .full-time {
+  position: relative;
+  font-size: 10px;
+}
+.video-entry .bar .full-time .green {
+  color: #b4d12e;
+}
+.video-entry .bar .full-time .the-time {
+  position: absolute;
+  width: 40px;
+  top: 0;
+  right: 0;
+  text-align: center;
+  margin-right: -20px;
 }

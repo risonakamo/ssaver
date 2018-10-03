@@ -9,8 +9,19 @@ body
 {
     margin: 50px 0 0 0;
     background-color: @background-dark;
+    font-family: "roboto";
+    font-weight: 400;
+    font-size: 0;
+    color: white;
 }
 
+h1,h2
+{
+    margin: 0;
+    font-weight: 400;
+}
+
+//video entry element
 .video-entry
 {
     width: 700px;
@@ -20,5 +31,83 @@ body
     img
     {
         height: 100%;
+    }
+
+    //main right side info container
+    .info
+    {
+        display: inline-block;
+        width: 460px;
+        vertical-align: top;
+        padding: 4px 0 0 15px;
+        box-sizing: border-box;
+
+        h1
+        {
+            font-size: 21px;
+        }
+
+        h2
+        {
+            font-size: 12px;
+            margin-top: 10px;
+            opacity: 0.5;
+        }
+    }
+
+    //the bar element
+    .bar
+    {
+        width: 100%;
+        @bar-small-font-size: 10px;
+
+        .now-time
+        {
+            font-size: @bar-small-font-size;
+            padding-left: 20%; //remove later
+
+            span
+            {
+                display: inline-block;
+                width: 40px;
+                margin-left: -20px;
+                text-align: center;
+            }
+        }
+
+        .the-bar
+        {
+            @bar-height: 4px;
+            height: @bar-height;
+            border: 1px solid white;
+            border-top: none;
+
+            .inside //the bar
+            {
+                border-bottom: @bar-height solid @main-red;
+                width: 20%; //remove later
+            }
+        }
+
+        .full-time
+        {
+            position: relative;
+            font-size: @bar-small-font-size;
+
+            .green
+            {
+                color: @main-green;
+            }
+
+            .the-time
+            {
+                position: absolute;
+                width: 40px;
+                top: 0;
+                right: 0;
+                text-align: center;
+                margin-right: -20px;
+            }
+        }
     }
 }
