@@ -3,6 +3,7 @@
 @main-red: #c7344e;
 @main-green: #b4d12e;
 @background-dark: #191919;
+@background-darker: #0d0d0d;
 
 body
 {
@@ -77,6 +78,11 @@ a
             }
         }
     }
+
+    .to-saved
+    {
+        font-size: 12px;
+    }
 }
 
 .controls
@@ -84,21 +90,24 @@ a
     .top-elements-shared();
     width: 85px;
     text-align: center;
+    background-color: @background-darker;
     transition: background-color .14s,color .14s;
 
     /*-- stuff for hovering --*/
+    @transition-text-colour: @background-darker;
+
     &.save
     {
         background-color: @main-red;
 
         .save-button
         {
-            color: @background-dark;
+            color: @transition-text-colour;
         }
 
         .done-button
         {
-            color: @background-dark;
+            color: @transition-text-colour;
             opacity: .45;
         }
     }
@@ -109,13 +118,13 @@ a
 
         .save-button
         {
-            color: @background-dark;
+            color: @transition-text-colour;
             opacity: .45;
         }
 
         .done-button
         {
-            color: @background-dark;
+            color: @transition-text-colour;
         }
     }
     /*-- end stuff for hovering --*/

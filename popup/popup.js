@@ -38,6 +38,12 @@ function buttonEvents()
     });
 
     //done button is initialised in initialiseStuff because it needs vid data
+
+    document.querySelector(".to-saved").addEventListener("click",(e)=>{
+        e.preventDefault();
+
+        chrome.tabs.create({url:"saved/saved.html"});
+    });
 }
 
 //special hover effects
