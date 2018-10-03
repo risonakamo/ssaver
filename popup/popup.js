@@ -60,6 +60,8 @@ function specialHover()
 function handleResult(res)
 {
     chrome.storage.local.set({[res.videoId]:res});
+
+    setLastTimes(res);
 }
 
 //initial site check.
@@ -106,7 +108,44 @@ function setLastTimes(data)
     var thedate=new Date(data.saveDate);
     lastSaveDateElement.innerText=`${thedate.toDateString().slice(4)} ${thedate.toTimeString().slice(0,5)}`;
 
-    var mins=Math.floor(data.currentTime/60);
-    var secs=Math.floor(data.currentTime-mins*60);
-    lastSaveTimeElement.innerText=`${mins}:${secs}`;
+    if (data.done)
+    {
+        lastSaveTimeElement.innerText="completed";
+    }
+
+    else
+    {
+        lastSaveTimeElement.innerText=secondsToTime(data.currentTime);
+    }
+}
+
+function secondsToTime(secs)
+{
+    var mins=Math.floor(secs/60);
+    var secs=Math.floor(secs-(mins*60));
+
+    var hours=Math.floor(mins/60);
+    mins=Math.floor(mins-(hours*60));
+
+    if (secs<10)
+    {
+        secs="0"+secs;
+    }
+
+    if (mins<10 && hours>0)
+    {
+        mins="0"+mins;
+    }
+
+    if (hours>0)
+    {
+        hours=hours+":";
+    }
+
+    else
+    {
+        hours="";
+    }
+
+    return hours+`${mins}:${secs}`;
 }

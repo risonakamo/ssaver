@@ -9,7 +9,9 @@ type videoData
     duration: float,
     currentTime: float,
 
-    saveDate: datestring
+    saveDate: datestring,
+
+    done?: bool
 }
 
 type localStorage
