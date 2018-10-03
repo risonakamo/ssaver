@@ -96,6 +96,7 @@ function initialiseStuff(url)
         if (!data || data.done)
         {
             document.querySelector(".controls").classList.add("no-save");
+            return;
         }
 
         setLastTimes(data);
@@ -151,4 +152,12 @@ function secondsToTime(secs)
     }
 
     return hours+`${mins}:${secs}`;
+}
+
+//show the whole extension storage
+function showStorage()
+{
+    chrome.storage.local.get(null,(data)=>{
+        console.log(data);
+    });
 }
