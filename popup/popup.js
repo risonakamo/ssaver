@@ -2,6 +2,7 @@ window.onload=main;
 
 var lastSaveDateElement;
 var lastSaveTimeElement;
+var controlsOuter;
 
 function main()
 {
@@ -12,12 +13,20 @@ function main2(url)
 {
     lastSaveDateElement=document.querySelector(".last-save");
     lastSaveTimeElement=document.querySelector(".vid-time");
-    initialiseStuff(url);
-    specialHover();
+    controlsOuter=document.querySelector(".controls");
 
+    initialiseStuff(url);
+
+    specialHover();
+    buttonEvents();
+}
+
+function buttonEvents()
+{
     document.querySelector(".save-button").addEventListener("click",(e)=>{
         e.preventDefault();
 
+        controlsOuter.classList.remove("no-save");
         chrome.tabs.executeScript({file:"popup/yt-hook-pre.js"},()=>{
             setTimeout(()=>{
                 chrome.tabs.executeScript({file:"popup/yt-hook-final.js"},(res)=>{
@@ -27,30 +36,31 @@ function main2(url)
             },50);
         });
     });
+
+    //done button is initialised in initialiseStuff because it needs vid data
 }
 
 //special hover effects
 //add a class to the parent container "controls" each time a child A is hovered over
 function specialHover()
 {
-    var controlsTop=document.querySelector(".controls");
-    var buttons=controlsTop.querySelectorAll(".controls>a");
+    var buttons=controlsOuter.querySelectorAll(".controls>a");
     var buttonAddClasses=["save","done"]; //make sure the number of strings in here match the number of A elements
 
     buttons.forEach((x,i)=>{
         x.addEventListener("mouseenter",(e)=>{
             for (var y=0;y<buttonAddClasses.length;y++)
             {
-                controlsTop.classList.remove(buttonAddClasses[y]);
+                controlsOuter.classList.remove(buttonAddClasses[y]);
             }
 
-            controlsTop.classList.add(buttonAddClasses[i]);
+            controlsOuter.classList.add(buttonAddClasses[i]);
         });
 
         x.addEventListener("mouseleave",(e)=>{
             for (var y=0;y<buttonAddClasses.length;y++)
             {
-                controlsTop.classList.remove(buttonAddClasses[y]);
+                controlsOuter.classList.remove(buttonAddClasses[y]);
             }
         });
     });
@@ -95,11 +105,24 @@ function initialiseStuff(url)
 
         if (!data || data.done)
         {
-            document.querySelector(".controls").classList.add("no-save");
-            return;
+            controlsOuter.classList.add("no-save");
+
+            if (!data)
+            {
+                return;
+            }
         }
 
         setLastTimes(data);
+
+        document.querySelector(".done-button").addEventListener("click",(e)=>{
+            e.preventDefault();
+
+            data.done=1;
+            chrome.storage.local.set({[vidId]:data});
+            setLastTimes(data);
+            controlsOuter.classList.add("no-save");
+        });
     });
 }
 
@@ -113,7 +136,7 @@ function setLastTimes(data)
 
     if (data.done)
     {
-        lastSaveTimeElement.innerText="completed";
+        lastSaveTimeElement.innerText="done";
     }
 
     else
