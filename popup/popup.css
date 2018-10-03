@@ -52,29 +52,37 @@ a {
 }
 .controls.save .done-button {
   color: #191919;
-  opacity: 0.5;
+  opacity: 0.45;
 }
 .controls.done {
   background-color: #b4d12e;
 }
 .controls.done .save-button {
   color: #191919;
-  opacity: 0.5;
+  opacity: 0.45;
 }
 .controls.done .done-button {
   color: #191919;
+}
+.controls.no-save .save-button {
+  padding: 112px 0 111px 0;
+}
+.controls.no-save .done-button {
+  display: none;
 }
 .controls .save-button {
   display: block;
   font-size: 15px;
   padding: 79px 0 75px 0;
   color: #c7344e;
+  transition: opacity 0.2s;
 }
 .controls .done-button {
   display: block;
   font-size: 15px;
   padding: 79px 0 75px 0;
   color: #c7344e;
+  transition: opacity 0.2s;
   padding: 26px 0 25px 0;
   color: #b4d12e;
 }

@@ -92,9 +92,9 @@ function initialiseStuff(url)
     chrome.storage.local.get(vidId,(data)=>{
         data=data[vidId];
 
-        if (!data)
+        if (!data || data.done)
         {
-            return;
+            document.querySelector(".controls").classList.add("no-save");
         }
 
         setLastTimes(data);
@@ -119,6 +119,7 @@ function setLastTimes(data)
     }
 }
 
+//given seconds, convert to a time stamp supporting hh:mm:ss
 function secondsToTime(secs)
 {
     var mins=Math.floor(secs/60);

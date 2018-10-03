@@ -80,7 +80,7 @@ a
         .done-button
         {
             color: @background-dark;
-            opacity: .5;
+            opacity: .45;
         }
     }
 
@@ -91,7 +91,7 @@ a
         .save-button
         {
             color: @background-dark;
-            opacity: .5;
+            opacity: .45;
         }
 
         .done-button
@@ -101,12 +101,27 @@ a
     }
     /*-- end stuff for hovering --*/
 
+    //modifications for no-save class
+    &.no-save
+    {
+        .save-button
+        {
+            padding: 112px 0 111px 0;
+        }
+
+        .done-button
+        {
+            display: none;
+        }
+    }
+
     .save-button
     {
         display: block;
         font-size: 15px;
         padding: 79px 0 75px 0;
         color: @main-red;
+        transition: opacity .2s;
     }
 
     .done-button
