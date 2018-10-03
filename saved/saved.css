@@ -1,4 +1,13 @@
 @charset "UTF-8";
 body {
-  margin: 0;
+  margin: 50px 0 0 0;
+  background-color: #191919;
+}
+.video-entry {
+  width: 700px;
+  height: 135px;
+  margin: auto;
+}
+.video-entry img {
+  height: 100%;
 }

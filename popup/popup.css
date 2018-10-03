@@ -82,7 +82,7 @@ a {
   color: #0d0d0d;
 }
 .controls.no-save .save-button {
-  padding: 112px 0 111px 0;
+  padding: 86px 0 86px 0;
 }
 .controls.no-save .done-button {
   display: none;
@@ -90,14 +90,14 @@ a {
 .controls .save-button {
   display: block;
   font-size: 15px;
-  padding: 79px 0 75px 0;
+  padding: 56px 0 55px 0;
   color: #c7344e;
   transition: opacity 0.2s;
 }
 .controls .done-button {
   display: block;
   font-size: 15px;
-  padding: 79px 0 75px 0;
+  padding: 56px 0 55px 0;
   color: #c7344e;
   transition: opacity 0.2s;
   padding: 26px 0 25px 0;

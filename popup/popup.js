@@ -104,7 +104,7 @@ function initialiseStuff(url)
 {
     var vidId=url.match(/v=(.*?)(&|$)/)[1];
 
-    document.querySelector(".thumbnail").src=`https://img.youtube.com/vi/${vidId}/0.jpg`;
+    document.querySelector(".thumbnail").src=`https://img.youtube.com/vi/${vidId}/maxresdefault.jpg`;
 
     chrome.storage.local.get(vidId,(data)=>{
         data=data[vidId];
