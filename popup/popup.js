@@ -62,6 +62,7 @@ function handleResult(res)
     chrome.storage.local.set({[res.videoId]:res});
 
     setLastTimes(res);
+    document.querySelector(".save-button").innerText="saved";
 }
 
 //initial site check.
