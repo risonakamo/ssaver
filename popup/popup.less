@@ -86,7 +86,9 @@ a
 //controls element, the whole right side
 .controls
 {
-    .top-elements-shared();
+    display: inline-flex;
+    flex-direction: column;
+    height: 198px;
     width: 85px;
     text-align: center;
     background-color: @background-darker;
@@ -131,11 +133,6 @@ a
     //modifications for no-save class
     &.no-save
     {
-        .save-button
-        {
-            padding: 86px 0 86px 0;
-        }
-
         .done-button
         {
             display: none;
@@ -144,17 +141,19 @@ a
 
     .save-button
     {
-        display: block;
+        display: flex;
         font-size: 15px;
-        padding: 56px 0 55px 0;
         color: @main-red;
+        flex: 2;
+        align-items: center;
+        justify-content: center;
         transition: opacity .2s;
     }
 
     .done-button
     {
         .save-button();
-        padding: 26px 0 25px 0;
+        flex: 1;
         color: @main-green;
     }
 }

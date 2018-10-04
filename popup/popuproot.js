@@ -151,10 +151,7 @@ class PopupRoot extends React.Component {
       className: "info-block time"
     }, React.createElement("h1", null, "at time"), React.createElement("p", {
       className: "vid-time"
-    }, this.state.saveTime))), React.createElement("a", {
-      className: "to-saved",
-      href: ""
-    }, "to saved")), React.createElement("div", {
+    }, this.state.saveTime)))), React.createElement("div", {
       className: `controls ${hideDoneClass}`,
       ref: this.controlsTop
     }, React.createElement("a", {

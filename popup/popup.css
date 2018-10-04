@@ -52,8 +52,9 @@ a {
   font-size: 12px;
 }
 .controls {
-  display: inline-block;
-  vertical-align: top;
+  display: inline-flex;
+  flex-direction: column;
+  height: 198px;
   width: 85px;
   text-align: center;
   background-color: #0d0d0d;
@@ -81,26 +82,27 @@ a {
 .controls.done .done-button {
   color: #0d0d0d;
 }
-.controls.no-save .save-button {
-  padding: 86px 0 86px 0;
-}
 .controls.no-save .done-button {
   display: none;
 }
 .controls .save-button {
-  display: block;
+  display: flex;
   font-size: 15px;
-  padding: 56px 0 55px 0;
   color: #c7344e;
+  flex: 2;
+  align-items: center;
+  justify-content: center;
   transition: opacity 0.2s;
 }
 .controls .done-button {
-  display: block;
+  display: flex;
   font-size: 15px;
-  padding: 56px 0 55px 0;
   color: #c7344e;
+  flex: 2;
+  align-items: center;
+  justify-content: center;
   transition: opacity 0.2s;
-  padding: 26px 0 25px 0;
+  flex: 1;
   color: #b4d12e;
 }
 .bad-site,

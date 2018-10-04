@@ -172,10 +172,6 @@ class PopupRoot extends React.Component
             <p className="vid-time">{this.state.saveTime}</p>
           </div>
         </div>
-
-        <a className="to-saved" href="">
-          to saved
-        </a>
       </div>
 
       <div className={`controls ${hideDoneClass}`} ref={this.controlsTop}>
