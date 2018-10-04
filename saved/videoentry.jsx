@@ -14,7 +14,7 @@ class VideoEntry extends React.Component
 
     return (
       <div className="video-entry">
-        <img src={`https://img.youtube.com/vi/${this.props.data.videoId}/maxresdefault.jpg`}/>
+        <img src={`https://img.youtube.com/vi/${this.props.data.videoId}/mqdefault.jpg`}/>
         <div className="info">
           <a className="names" href={this.props.data.url}>
             <h1>{this.props.data.title}</h1>

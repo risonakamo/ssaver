@@ -12,7 +12,7 @@ class VideoEntry extends React.Component {
     return React.createElement("div", {
       className: "video-entry"
     }, React.createElement("img", {
-      src: `https://img.youtube.com/vi/${this.props.data.videoId}/maxresdefault.jpg`
+      src: `https://img.youtube.com/vi/${this.props.data.videoId}/mqdefault.jpg`
     }), React.createElement("div", {
       className: "info"
     }, React.createElement("a", {
