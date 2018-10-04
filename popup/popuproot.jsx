@@ -17,6 +17,9 @@ class PopupRoot extends React.Component
 
     //the video id extracted from the url
     this.vidId=this.props.url.match(/v=(.*?)(&|$)/)[1];
+
+    this.controlsTop=React.createRef();
+    this.controlsTopHoverClasses=["save","done"];
   }
 
   componentDidMount()
@@ -63,6 +66,23 @@ class PopupRoot extends React.Component
     this.setState(initialise);
   }
 
+  //special hover effect. add the addclass to the controlsTop, remove if remove is true
+  specialHover(addClass,remove)
+  {
+    if (remove)
+    {
+      this.controlsTop.current.classList.remove(addClass);
+      return;
+    }
+
+    for (var x=0;x<this.controlsTopHoverClasses.length;x++)
+    {
+      this.controlsTop.current.classList.remove(this.controlsTopHoverClasses[x]);
+    }
+
+    this.controlsTop.current.classList.add(addClass);
+  }
+
   render()
   {
     var hideDoneClass=this.state.hideDone?"no-save":"";
@@ -74,7 +94,7 @@ class PopupRoot extends React.Component
         <div className="info-block-holder">
           <div className="info-block date">
             <h1>last saved</h1>
-            <p className="last-save">{this.state.lastSave}</p>
+            <p className="last-save" title={this.state.lastSaveTitle}>{this.state.lastSave}</p>
           </div>
 
           <div className="info-block time">
@@ -88,9 +108,18 @@ class PopupRoot extends React.Component
         </a>
       </div>
 
-      <div className={`controls ${hideDoneClass}`}>
-        <a href="" className="save-button">save</a>
-        <a href="" className="done-button">done</a>
+      <div className={`controls ${hideDoneClass}`} ref={this.controlsTop}>
+        <a href="" className="save-button" onMouseEnter={()=>{this.specialHover("save")}}
+          onMouseLeave={()=>{this.specialHover("save",1)}}
+        >
+          save
+        </a>
+
+        <a href="" className="done-button" onMouseEnter={()=>{this.specialHover("done")}}
+          onMouseLeave={()=>{this.specialHover("done",1)}}
+        >
+          done
+        </a>
       </div>
     </>);
   }

@@ -16,6 +16,8 @@ class PopupRoot extends React.Component {
     }; //the video id extracted from the url
 
     this.vidId = this.props.url.match(/v=(.*?)(&|$)/)[1];
+    this.controlsTop = React.createRef();
+    this.controlsTopHoverClasses = ["save", "done"];
   }
 
   componentDidMount() {
@@ -52,6 +54,20 @@ class PopupRoot extends React.Component {
     }
 
     this.setState(initialise);
+  } //special hover effect. add the addclass to the controlsTop, remove if remove is true
+
+
+  specialHover(addClass, remove) {
+    if (remove) {
+      this.controlsTop.current.classList.remove(addClass);
+      return;
+    }
+
+    for (var x = 0; x < this.controlsTopHoverClasses.length; x++) {
+      this.controlsTop.current.classList.remove(this.controlsTopHoverClasses[x]);
+    }
+
+    this.controlsTop.current.classList.add(addClass);
   }
 
   render() {
@@ -66,7 +82,8 @@ class PopupRoot extends React.Component {
     }, React.createElement("div", {
       className: "info-block date"
     }, React.createElement("h1", null, "last saved"), React.createElement("p", {
-      className: "last-save"
+      className: "last-save",
+      title: this.state.lastSaveTitle
     }, this.state.lastSave)), React.createElement("div", {
       className: "info-block time"
     }, React.createElement("h1", null, "at time"), React.createElement("p", {
@@ -75,13 +92,26 @@ class PopupRoot extends React.Component {
       className: "to-saved",
       href: ""
     }, "to saved")), React.createElement("div", {
-      className: `controls ${hideDoneClass}`
+      className: `controls ${hideDoneClass}`,
+      ref: this.controlsTop
     }, React.createElement("a", {
       href: "",
-      className: "save-button"
+      className: "save-button",
+      onMouseEnter: () => {
+        this.specialHover("save");
+      },
+      onMouseLeave: () => {
+        this.specialHover("save", 1);
+      }
     }, "save"), React.createElement("a", {
       href: "",
-      className: "done-button"
+      className: "done-button",
+      onMouseEnter: () => {
+        this.specialHover("done");
+      },
+      onMouseLeave: () => {
+        this.specialHover("done", 1);
+      }
     }, "done")));
   }
 
