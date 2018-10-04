@@ -56,7 +56,6 @@ h2 {
 .video-entry .bar .now-time {
   font-size: 12px;
   margin-bottom: 2px;
-  padding-left: 20%;
 }
 .video-entry .bar .now-time span {
   display: inline-block;
@@ -72,7 +71,6 @@ h2 {
 }
 .video-entry .bar .the-bar .inside {
   border-bottom: 7px solid #c7344e;
-  width: 20%;
 }
 .video-entry .bar .full-time {
   position: relative;
