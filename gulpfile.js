@@ -22,10 +22,12 @@ var reactConfig={
 };
 
 gulp.watch(lessConfig.targets,()=>{
+    console.log("compliling less");
     gulp.src(lessConfig.targets,{base:lessConfig.base}).pipe(less()).pipe(gulp.dest(lessConfig.base));
 });
 
 gulp.watch(reactConfig.targets,()=>{
+    console.log("compliling react");
     gulp.src(reactConfig.targets,{base:reactConfig.base})
         .pipe(plumber(defaultPlumber))
         .pipe(babel({presets:["@babel/preset-react"]}))
