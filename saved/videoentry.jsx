@@ -18,7 +18,7 @@ class VideoEntry extends React.Component
 
           <div className="bar">
             <div className="now-time" style={{paddingLeft:`${completePercent}%`}}>
-              <span>0:20</span>
+              <span>{secondsToTime(this.props.data.currentTime)}</span>
             </div>
 
             <div className="the-bar">
@@ -26,8 +26,8 @@ class VideoEntry extends React.Component
             </div>
 
             <div className="full-time">
-              <span>2 days ago <span className="red">#2</span> <a href="" className="green">mark done</a></span>
-              <span className="the-time">1:21</span>
+              <span>{timeago().format(new Date(this.props.data.saveDate))} <span className="red">#2</span> <a href="" className="green">mark done</a></span>
+              <span className="the-time">{secondsToTime(this.props.data.duration)}</span>
             </div>
           </div>
         </div>

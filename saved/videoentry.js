@@ -19,7 +19,7 @@ class VideoEntry extends React.Component {
       style: {
         paddingLeft: `${completePercent}%`
       }
-    }, React.createElement("span", null, "0:20")), React.createElement("div", {
+    }, React.createElement("span", null, secondsToTime(this.props.data.currentTime))), React.createElement("div", {
       className: "the-bar"
     }, React.createElement("div", {
       className: "inside",
@@ -28,14 +28,14 @@ class VideoEntry extends React.Component {
       }
     })), React.createElement("div", {
       className: "full-time"
-    }, React.createElement("span", null, "2 days ago ", React.createElement("span", {
+    }, React.createElement("span", null, timeago().format(new Date(this.props.data.saveDate)), " ", React.createElement("span", {
       className: "red"
     }, "#2"), " ", React.createElement("a", {
       href: "",
       className: "green"
     }, "mark done")), React.createElement("span", {
       className: "the-time"
-    }, "1:21")))));
+    }, secondsToTime(this.props.data.duration))))));
   }
 
 }
