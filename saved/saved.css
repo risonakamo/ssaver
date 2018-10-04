@@ -7,18 +7,30 @@ body {
   font-size: 0;
   color: white;
 }
+a {
+  color: white;
+  text-decoration: none;
+}
 h1,
 h2 {
   margin: 0;
   font-weight: 400;
 }
 .video-entry {
+  display: flex;
+  align-items: center;
   width: 700px;
-  height: 135px;
   margin: auto;
 }
 .video-entry img {
-  height: 100%;
+  width: 240px;
+}
+.video-entry a {
+  display: inline-block;
+  transition: opacity 0.2s;
+}
+.video-entry a:hover {
+  opacity: 0.7;
 }
 .video-entry .info {
   display: inline-block;
@@ -27,19 +39,23 @@ h2 {
   padding: 4px 0 0 15px;
   box-sizing: border-box;
 }
-.video-entry .info h1 {
+.video-entry .info .names {
+  min-height: 93px;
+}
+.video-entry .info .names h1 {
   font-size: 21px;
 }
-.video-entry .info h2 {
-  font-size: 12px;
-  margin-top: 10px;
+.video-entry .info .names h2 {
+  font-size: 15px;
+  margin: 13px 0 9px 0;
   opacity: 0.5;
 }
 .video-entry .bar {
   width: 100%;
 }
 .video-entry .bar .now-time {
-  font-size: 10px;
+  font-size: 12px;
+  margin-bottom: 2px;
   padding-left: 20%;
 }
 .video-entry .bar .now-time span {
@@ -49,17 +65,21 @@ h2 {
   text-align: center;
 }
 .video-entry .bar .the-bar {
-  height: 4px;
+  height: 7px;
   border: 1px solid white;
   border-top: none;
+  margin-bottom: 3px;
 }
 .video-entry .bar .the-bar .inside {
-  border-bottom: 4px solid #c7344e;
+  border-bottom: 7px solid #c7344e;
   width: 20%;
 }
 .video-entry .bar .full-time {
   position: relative;
-  font-size: 10px;
+  font-size: 12px;
+}
+.video-entry .bar .full-time .red {
+  color: #c7344e;
 }
 .video-entry .bar .full-time .green {
   color: #b4d12e;

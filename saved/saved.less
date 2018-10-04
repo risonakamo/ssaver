@@ -1,9 +1,6 @@
 @charset "UTF-8";
 
-@main-red: #c7344e;
-@main-green: #b4d12e;
-@background-dark: #191919;
-@background-darker: #0d0d0d;
+@import "../shared/shared.less";
 
 body
 {
@@ -15,6 +12,12 @@ body
     color: white;
 }
 
+a
+{
+    color: white;
+    text-decoration: none;
+}
+
 h1,h2
 {
     margin: 0;
@@ -24,13 +27,25 @@ h1,h2
 //video entry element
 .video-entry
 {
+    display: flex;
+    align-items: center;
     width: 700px;
-    height: 135px;
     margin: auto;
 
     img
     {
-        height: 100%;
+        width: 240px;
+    }
+
+    a
+    {
+        display: inline-block;
+        transition: opacity .2s;
+    }
+
+    a:hover
+    {
+        opacity: .7;
     }
 
     //main right side info container
@@ -42,16 +57,21 @@ h1,h2
         padding: 4px 0 0 15px;
         box-sizing: border-box;
 
-        h1
+        .names
         {
-            font-size: 21px;
-        }
+            min-height: 93px;
 
-        h2
-        {
-            font-size: 12px;
-            margin-top: 10px;
-            opacity: 0.5;
+            h1
+            {
+                font-size: 21px;
+            }
+
+            h2
+            {
+                font-size: 15px;
+                margin: 13px 0 9px 0;
+                opacity: 0.5;
+            }
         }
     }
 
@@ -59,11 +79,12 @@ h1,h2
     .bar
     {
         width: 100%;
-        @bar-small-font-size: 10px;
+        @bar-small-font-size: 12px;
 
         .now-time
         {
             font-size: @bar-small-font-size;
+            margin-bottom: 2px;
             padding-left: 20%; //remove later
 
             span
@@ -77,10 +98,11 @@ h1,h2
 
         .the-bar
         {
-            @bar-height: 4px;
+            @bar-height: 7px;
             height: @bar-height;
             border: 1px solid white;
             border-top: none;
+            margin-bottom: 3px;
 
             .inside //the bar
             {
@@ -94,9 +116,15 @@ h1,h2
             position: relative;
             font-size: @bar-small-font-size;
 
+            .red
+            {
+                color: @main-red;
+            }
+
             .green
             {
                 color: @main-green;
+
             }
 
             .the-time
