@@ -21,7 +21,7 @@ class PopupRoot extends React.Component
     this.vidId=this.props.url.match(/v=(.*?)(&|$)/)[1];
 
     this.controlsTop=React.createRef();
-    this.controlsTopHoverClasses=["save","done"];
+    this.controlsTopHoverClasses=["save","done","to-saved"];
 
     // this.lastData;* //last most updated vidEntry object obtained
                        //either from the first load or the first save action
@@ -186,6 +186,15 @@ class PopupRoot extends React.Component
           onClick={this.doneOperation}
         >
           done
+        </a>
+
+        <a href="" className="to-saved" onMouseEnter={()=>{this.specialHover("to-saved")}}
+          onMouseLeave={()=>{this.specialHover("to-saved",1)}}
+          onClick={()=>{
+            chrome.tabs.create({url:"saved/saved.html"});
+          }}
+        >
+          saved videos
         </a>
       </div>
     </>);

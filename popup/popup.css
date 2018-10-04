@@ -62,25 +62,32 @@ a {
   /*-- stuff for hovering --*/
   /*-- end stuff for hovering --*/
 }
+.controls.save a,
+.controls.done a,
+.controls.to-saved a {
+  color: #0d0d0d;
+  opacity: 0.45;
+}
 .controls.save {
   background-color: #c7344e;
 }
-.controls.save .save-button {
+.controls.save a.save-button {
   color: #0d0d0d;
-}
-.controls.save .done-button {
-  color: #0d0d0d;
-  opacity: 0.45;
+  opacity: 1;
 }
 .controls.done {
   background-color: #b4d12e;
 }
-.controls.done .save-button {
-  color: #0d0d0d;
-  opacity: 0.45;
-}
 .controls.done .done-button {
   color: #0d0d0d;
+  opacity: 1;
+}
+.controls.to-saved {
+  background-color: #1f7fa7;
+}
+.controls.to-saved .to-saved {
+  color: #0d0d0d;
+  opacity: 1;
 }
 .controls.no-save .done-button {
   display: none;
@@ -89,7 +96,7 @@ a {
   display: flex;
   font-size: 15px;
   color: #c7344e;
-  flex: 2;
+  flex: 1;
   align-items: center;
   justify-content: center;
   transition: opacity 0.2s;
@@ -98,12 +105,21 @@ a {
   display: flex;
   font-size: 15px;
   color: #c7344e;
-  flex: 2;
+  flex: 1;
   align-items: center;
   justify-content: center;
   transition: opacity 0.2s;
-  flex: 1;
   color: #b4d12e;
+}
+.controls .to-saved {
+  display: flex;
+  font-size: 15px;
+  color: #c7344e;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+  color: #1f7fa7;
 }
 .bad-site,
 .good-site {

@@ -97,19 +97,23 @@ a
     /*-- stuff for hovering --*/
     @transition-text-colour: @background-darker;
 
+    &.save,&.done,&.to-saved
+    {
+        a
+        {
+            color: @transition-text-colour;
+            opacity: .45;
+        }
+    }
+
     &.save
     {
         background-color: @main-red;
 
-        .save-button
+        a.save-button
         {
             color: @transition-text-colour;
-        }
-
-        .done-button
-        {
-            color: @transition-text-colour;
-            opacity: .45;
+            opacity: 1;
         }
     }
 
@@ -117,15 +121,21 @@ a
     {
         background-color: @main-green;
 
-        .save-button
-        {
-            color: @transition-text-colour;
-            opacity: .45;
-        }
-
         .done-button
         {
             color: @transition-text-colour;
+            opacity: 1;
+        }
+    }
+
+    &.to-saved
+    {
+        background-color: @main-blue;
+
+        .to-saved
+        {
+            color: @transition-text-colour;
+            opacity: 1;
         }
     }
     /*-- end stuff for hovering --*/
@@ -144,7 +154,7 @@ a
         display: flex;
         font-size: 15px;
         color: @main-red;
-        flex: 2;
+        flex: 1;
         align-items: center;
         justify-content: center;
         transition: opacity .2s;
@@ -153,8 +163,13 @@ a
     .done-button
     {
         .save-button();
-        flex: 1;
         color: @main-green;
+    }
+
+    .to-saved
+    {
+        .save-button();
+        color: @main-blue;
     }
 }
 
