@@ -11,6 +11,7 @@ type videoData
 
     saveDate: datestring,
 
+    saveCount: int,
     done?: bool
 }
 

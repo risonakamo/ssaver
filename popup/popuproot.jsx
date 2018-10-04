@@ -5,9 +5,11 @@ class PopupRoot extends React.Component
   constructor(props)
   {
     super(props);
+    this.saveOperation=this.saveOperation.bind(this);
+    this.doneOperation=this.doneOperation.bind(this);
 
     this.state={
-      //hideDone:0,* whether DONE button is hidden or not
+      hideDone:0, //whether DONE button is hidden or not
 
       /*-- string info appearing in the popup --*/
       lastSave:"never", //what to set in the last save date spot
@@ -20,12 +22,25 @@ class PopupRoot extends React.Component
 
     this.controlsTop=React.createRef();
     this.controlsTopHoverClasses=["save","done"];
+
+    // this.lastData;* //last most updated vidEntry object obtained
+                       //either from the first load or the first save action
   }
 
   componentDidMount()
   {
     chrome.storage.local.get(this.vidId,(data)=>{
       data=data[this.vidId];
+
+      if (data)
+      {
+        this.lastData=data;
+      }
+
+      else
+      {
+        this.lastData={};
+      }
 
       this.updateInfo(data);
     });
@@ -34,8 +49,6 @@ class PopupRoot extends React.Component
   //give it vidEntry to update info on the popup
   updateInfo(data)
   {
-    var thedate=new Date(data.saveDate);
-
     if (!data || data.done)
     {
       this.setState({hideDone:1});
@@ -83,6 +96,63 @@ class PopupRoot extends React.Component
     this.controlsTop.current.classList.add(addClass);
   }
 
+  //perform a save operation. saves the current video on the page to storage and
+  //updates the popup information
+  saveOperation(e)
+  {
+    e.preventDefault();
+
+    this.setState({hideDone:0});
+    chrome.tabs.executeScript({file:"popup/yt-hook-pre.js"},()=>{
+      setTimeout(()=>{
+        chrome.tabs.executeScript({file:"popup/yt-hook-final.js"},(res)=>{
+          this.updateInfo(res[0]);
+
+          if (this.lastData && this.lastData.saveCount)
+          {
+            this.lastData.saveCount++;
+          }
+
+          else
+          {
+            this.lastData.saveCount=1;
+          }
+
+          res[0].saveCount=this.lastData.saveCount;
+
+          chrome.storage.local.set({[this.vidId]:res[0]});
+
+          this.lastData=res[0];
+
+          console.log(res[0]);
+        });
+      },50);
+    });
+  }
+
+  //perform done operation, pushing to database the vid entry except with done checked off.
+  doneOperation(e)
+  {
+    e.preventDefault();
+
+    this.setState({hideDone:1});
+
+    if (this.lastData.saveCount)
+    {
+      this.lastData.saveCount++;
+    }
+
+    else
+    {
+      this.lastData.saveCount=1;
+    }
+
+    this.lastData.saveDate=new Date().toString();
+    this.lastData.done=1;
+    chrome.storage.local.set({[this.vidId]:this.lastData});
+    this.updateInfo(this.lastData);
+  }
+
   render()
   {
     var hideDoneClass=this.state.hideDone?"no-save":"";
@@ -110,13 +180,14 @@ class PopupRoot extends React.Component
 
       <div className={`controls ${hideDoneClass}`} ref={this.controlsTop}>
         <a href="" className="save-button" onMouseEnter={()=>{this.specialHover("save")}}
-          onMouseLeave={()=>{this.specialHover("save",1)}}
+          onMouseLeave={()=>{this.specialHover("save",1)}} onClick={this.saveOperation}
         >
           save
         </a>
 
         <a href="" className="done-button" onMouseEnter={()=>{this.specialHover("done")}}
           onMouseLeave={()=>{this.specialHover("done",1)}}
+          onClick={this.doneOperation}
         >
           done
         </a>
