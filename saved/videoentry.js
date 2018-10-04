@@ -3,6 +3,12 @@
 class VideoEntry extends React.Component {
   render() {
     var completePercent = this.props.data.currentTime / this.props.data.duration * 100;
+    var saveCount = this.props.data.saveCount;
+
+    if (!saveCount) {
+      saveCount = 1;
+    }
+
     return React.createElement("div", {
       className: "video-entry"
     }, React.createElement("img", {
@@ -30,7 +36,7 @@ class VideoEntry extends React.Component {
       className: "full-time"
     }, React.createElement("span", null, timeago().format(new Date(this.props.data.saveDate)), " ", React.createElement("span", {
       className: "red"
-    }, "#2"), " ", React.createElement("a", {
+    }, "#", saveCount), " ", React.createElement("a", {
       href: "",
       className: "green"
     }, "mark done")), React.createElement("span", {

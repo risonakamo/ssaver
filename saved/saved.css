@@ -81,6 +81,7 @@ h2 {
 }
 .video-entry .bar .full-time .green {
   color: #b4d12e;
+  text-decoration: underline;
 }
 .video-entry .bar .full-time .the-time {
   position: absolute;
