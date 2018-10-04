@@ -139,7 +139,7 @@ class PopupRoot extends React.Component {
       className: "info"
     }, React.createElement("img", {
       className: "thumbnail",
-      src: `https://img.youtube.com/vi/${this.vidId}/maxresdefault.jpg`
+      src: `https://img.youtube.com/vi/${this.vidId}/mqdefault.jpg`
     }), React.createElement("div", {
       className: "info-block-holder"
     }, React.createElement("div", {

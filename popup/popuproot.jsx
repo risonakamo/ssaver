@@ -159,7 +159,7 @@ class PopupRoot extends React.Component
 
     return (<>
       <div className="info">
-        <img className="thumbnail" src={`https://img.youtube.com/vi/${this.vidId}/maxresdefault.jpg`}/>
+        <img className="thumbnail" src={`https://img.youtube.com/vi/${this.vidId}/mqdefault.jpg`}/>
 
         <div className="info-block-holder">
           <div className="info-block date">
