@@ -12,9 +12,15 @@ a {
   text-decoration: none;
 }
 h1,
-h2 {
+h2,
+h3 {
   margin: 0;
   font-weight: 400;
+}
+h3 {
+  width: 700px;
+  font-size: 15px;
+  margin: 12px auto 12px auto;
 }
 .video-entry {
   display: flex;
@@ -92,7 +98,7 @@ h2 {
   margin-right: -20px;
 }
 .video-entry.done {
-  opacity: 0.6;
+  opacity: 0.5;
 }
 .video-entry.done .green {
   display: none;

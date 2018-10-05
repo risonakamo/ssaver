@@ -51,10 +51,12 @@ class VideoHandler extends React.Component
     sortVidEntryDate(doneVids);
 
     return (<>
+      <h3>Saved Videos</h3>
       {vids.map((x,i)=>{
         return <VideoEntry data={x} key={i} markDone={this.markDone}/>;
       })}
 
+      <h3>Done Videos</h3>
       {doneVids.map((x,i)=>{
         return <VideoEntry data={x} key={i} markDone={this.markDone}/>;
       })}
