@@ -63,7 +63,7 @@ class PopupRoot extends React.Component
 
     var initialise={
       lastSave:timeago().format(thedate),
-      lastSaveTitle:`${thedate.toDateString().slice(4)}, ${thedate.toTimeString().slice(0,5)}`
+      lastSaveTitle:formatDateNice(thedate)
     };
 
     if (data.done)

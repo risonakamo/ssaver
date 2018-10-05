@@ -4,14 +4,13 @@ class VideoEntry extends React.Component
 {
   render()
   {
-    var completePercent;
-
     var saveCount=this.props.data.saveCount;
     if (!saveCount)
     {
       saveCount=1;
     }
 
+    var completePercent;
     var doneClass="";
     if (this.props.data.done)
     {
@@ -23,6 +22,8 @@ class VideoEntry extends React.Component
     {
       completePercent=(this.props.data.currentTime/this.props.data.duration)*100;
     }
+
+    var thedate=new Date(this.props.data.saveDate);
 
     return (
       <div className={`video-entry${doneClass}`}>
@@ -43,8 +44,8 @@ class VideoEntry extends React.Component
             </div>
 
             <div className="full-time">
-              <span>
-                {timeago().format(new Date(this.props.data.saveDate))}
+              <span title={formatDateNice(thedate)}>
+                {timeago().format(thedate)}
                 &nbsp;<span className="red">#{saveCount}</span>
                 &nbsp;<a href="" className="green">mark done</a>
               </span>

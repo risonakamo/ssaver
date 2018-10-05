@@ -30,6 +30,13 @@ function secondsToTime(secs)
     return hours+`${mins}:${secs}`;
 }
 
+//return string version of a date object
+//in the way i want
+function formatDateNice(thedate)
+{
+    return `${thedate.toDateString().slice(4)}, ${thedate.toTimeString().slice(0,5)}`;
+}
+
 //show the whole extension storage
 function showStorage()
 {

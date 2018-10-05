@@ -3,16 +3,37 @@ class VideoHandler extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      vids: []
+      vids: [],
+      doneVids: []
     };
   }
 
   componentDidMount() {
     chrome.storage.local.get(null, data => {
       for (var x in data) {
-        this.state.vids.push(data[x]);
+        if (data[x].done) {
+          this.state.doneVids.push(data[x]);
+        } else {
+          this.state.vids.push(data[x]);
+        }
       }
 
+      var aDate;
+      var bDate;
+
+      var dateSort = (a, b) => {
+        aDate = new Date(a.saveDate);
+        bDate = new Date(b.saveDate);
+
+        if (aDate < bDate) {
+          return 1;
+        } else {
+          return -1;
+        }
+      };
+
+      this.state.vids.sort(dateSort);
+      this.state.doneVids.sort(dateSort);
       this.setState({
         vids: this.state.vids
       });
@@ -20,12 +41,17 @@ class VideoHandler extends React.Component {
   }
 
   render() {
-    return this.state.vids.map((x, i) => {
+    return React.createElement(React.Fragment, null, this.state.vids.map((x, i) => {
       return React.createElement(VideoEntry, {
         data: x,
         key: i
       });
-    });
+    }), this.state.doneVids.map((x, i) => {
+      return React.createElement(VideoEntry, {
+        data: x,
+        key: i
+      });
+    }));
   }
 
 }
