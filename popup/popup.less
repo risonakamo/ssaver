@@ -4,7 +4,6 @@
 
 body
 {
-    width: 315px;
     margin: 0;
     background-color: @background-dark;
     color: white;
@@ -175,6 +174,7 @@ a
 
 .bad-site,.good-site
 {
+    width: 315px;
     display: none;
 
     &.show
@@ -185,5 +185,21 @@ a
 
 .bad-site
 {
+    width: 80px;
     font-size: 15px;
+
+    .to-saved2
+    {
+        .controls.save-button();
+        height: 60px;
+        text-align: center;
+        color: @main-blue;
+        transition: color .2s,background-color .2s;
+
+        &:hover
+        {
+            color: @background-dark;
+            background-color: @main-blue;
+        }
+    }
 }

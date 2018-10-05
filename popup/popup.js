@@ -10,6 +10,15 @@ function main2(url)
     ReactDOM.render(React.createElement(PopupRoot,{url}),document.querySelector(".good-site"));
 }
 
+function main3()
+{
+    document.querySelector(".to-saved2").addEventListener("click",(e)=>{
+        e.preventDefault();
+
+        chrome.tabs.create({url:"saved/saved.html"});
+    });
+}
+
 //initial site check.
 function checkSite()
 {
@@ -23,6 +32,7 @@ function checkSite()
         else
         {
             document.querySelector(".bad-site").classList.add("show");
+            main3();
         }
     });
 }
