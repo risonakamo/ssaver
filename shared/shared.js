@@ -44,3 +44,35 @@ function showStorage()
         console.log(data);
     });
 }
+
+//given an array of vid entries, sorts them by date, in place
+function sortVidEntryDate(entries)
+{
+    entries.sort((a,b)=>{
+        var aDate=new Date(a.saveDate);
+        var bDate=new Date(b.saveDate);
+
+        if (aDate<bDate)
+        {
+            return 1;
+        }
+
+        else
+        {
+            return -1;
+        }
+    });
+}
+
+//debug function. set everything to not done
+function setAllNotDone()
+{
+    chrome.storage.local.get(null,(data)=>{
+        for (var x in data)
+        {
+            delete data[x].done;
+        }
+
+        chrome.storage.local.set(data);
+    });
+}
