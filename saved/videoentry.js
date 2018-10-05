@@ -2,15 +2,24 @@
 //data: videoData object from storage
 class VideoEntry extends React.Component {
   render() {
-    var completePercent = this.props.data.currentTime / this.props.data.duration * 100;
+    var completePercent;
     var saveCount = this.props.data.saveCount;
 
     if (!saveCount) {
       saveCount = 1;
     }
 
+    var doneClass = "";
+
+    if (this.props.data.done) {
+      doneClass = " done";
+      completePercent = 100;
+    } else {
+      completePercent = this.props.data.currentTime / this.props.data.duration * 100;
+    }
+
     return React.createElement("div", {
-      className: "video-entry"
+      className: `video-entry${doneClass}`
     }, React.createElement("img", {
       src: `https://img.youtube.com/vi/${this.props.data.videoId}/mqdefault.jpg`
     }), React.createElement("div", {
@@ -34,9 +43,9 @@ class VideoEntry extends React.Component {
       }
     })), React.createElement("div", {
       className: "full-time"
-    }, React.createElement("span", null, timeago().format(new Date(this.props.data.saveDate)), " ", React.createElement("span", {
+    }, React.createElement("span", null, timeago().format(new Date(this.props.data.saveDate)), "\xA0", React.createElement("span", {
       className: "red"
-    }, "#", saveCount), " ", React.createElement("a", {
+    }, "#", saveCount), "\xA0", React.createElement("a", {
       href: "",
       className: "green"
     }, "mark done")), React.createElement("span", {

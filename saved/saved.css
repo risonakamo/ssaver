@@ -20,7 +20,7 @@ h2 {
   display: flex;
   align-items: center;
   width: 700px;
-  margin: auto;
+  margin: 12px auto 12px auto;
 }
 .video-entry img {
   width: 240px;
@@ -90,4 +90,19 @@ h2 {
   right: 0;
   text-align: center;
   margin-right: -20px;
+}
+.video-entry.done {
+  opacity: 0.6;
+}
+.video-entry.done .green {
+  display: none;
+}
+.video-entry.done .bar .full-time .red {
+  color: #b4d12e;
+}
+.video-entry.done .the-bar .inside {
+  border-bottom-color: #b4d12e;
+}
+.video-entry.done .now-time {
+  display: none;
 }
