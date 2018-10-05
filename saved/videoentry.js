@@ -1,5 +1,6 @@
-//VideoEntry(object data)
+//VideoEntry(object data,function markDone)
 //data: videoData object from storage
+//markDone: function from videohandler parent
 class VideoEntry extends React.Component {
   render() {
     var saveCount = this.props.data.saveCount;
@@ -50,7 +51,11 @@ class VideoEntry extends React.Component {
       className: "red"
     }, "#", saveCount), "\xA0", React.createElement("a", {
       href: "",
-      className: "green"
+      className: "green",
+      onClick: e => {
+        e.preventDefault();
+        this.props.markDone(this.props.data.videoId);
+      }
     }, "mark done")), React.createElement("span", {
       className: "the-time"
     }, secondsToTime(this.props.data.duration))))));
