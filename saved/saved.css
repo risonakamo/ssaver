@@ -112,3 +112,6 @@ h3 {
 .video-entry.done .now-time {
   display: none;
 }
+.video-entry.link-hover .double-hover {
+  opacity: 0.5;
+}

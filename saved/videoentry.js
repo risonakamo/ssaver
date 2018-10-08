@@ -2,6 +2,16 @@
 //data: videoData object from storage
 //markDone: function from videohandler parent
 class VideoEntry extends React.Component {
+  constructor(props) {
+    super(props);
+    this.doubleHover = this.doubleHover.bind(this);
+    this.entryTop = React.createRef();
+  }
+
+  doubleHover(e) {
+    this.entryTop.current.classList.toggle("link-hover");
+  }
+
   render() {
     var saveCount = this.props.data.saveCount;
 
@@ -21,14 +31,22 @@ class VideoEntry extends React.Component {
 
     var thedate = new Date(this.props.data.saveDate);
     return React.createElement("div", {
-      className: `video-entry${doneClass}`
+      className: `video-entry${doneClass}`,
+      ref: this.entryTop
+    }, React.createElement("a", {
+      className: "double-hover",
+      href: this.props.data.url,
+      onMouseEnter: this.doubleHover,
+      onMouseLeave: this.doubleHover
     }, React.createElement("img", {
       src: `https://img.youtube.com/vi/${this.props.data.videoId}/mqdefault.jpg`
-    }), React.createElement("div", {
+    })), React.createElement("div", {
       className: "info"
     }, React.createElement("a", {
-      className: "names",
-      href: this.props.data.url
+      className: "names double-hover",
+      href: this.props.data.url,
+      onMouseEnter: this.doubleHover,
+      onMouseLeave: this.doubleHover
     }, React.createElement("h1", null, this.props.data.title), React.createElement("h2", null, this.props.data.channel)), React.createElement("div", {
       className: "bar"
     }, React.createElement("div", {

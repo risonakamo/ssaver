@@ -3,6 +3,19 @@
 //markDone: function from videohandler parent
 class VideoEntry extends React.Component
 {
+  constructor(props)
+  {
+    super(props);
+    this.doubleHover=this.doubleHover.bind(this);
+
+    this.entryTop=React.createRef();
+  }
+
+  doubleHover(e)
+  {
+    this.entryTop.current.classList.toggle("link-hover");
+  }
+
   render()
   {
     var saveCount=this.props.data.saveCount;
@@ -27,10 +40,16 @@ class VideoEntry extends React.Component
     var thedate=new Date(this.props.data.saveDate);
 
     return (
-      <div className={`video-entry${doneClass}`}>
-        <img src={`https://img.youtube.com/vi/${this.props.data.videoId}/mqdefault.jpg`}/>
+      <div className={`video-entry${doneClass}`} ref={this.entryTop}>
+        <a className="double-hover" href={this.props.data.url}
+          onMouseEnter={this.doubleHover} onMouseLeave={this.doubleHover}
+        >
+          <img src={`https://img.youtube.com/vi/${this.props.data.videoId}/mqdefault.jpg`}/>
+        </a>
         <div className="info">
-          <a className="names" href={this.props.data.url}>
+          <a className="names double-hover" href={this.props.data.url}
+            onMouseEnter={this.doubleHover} onMouseLeave={this.doubleHover}
+          >
             <h1>{this.props.data.title}</h1>
             <h2>{this.props.data.channel}</h2>
           </a>
