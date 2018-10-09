@@ -3,6 +3,7 @@
     "name":"Youtube Video Position Saver",
     "version":"1.0",
     "description":"Bookmark Youtube videos to watch later, continuing off at the same time",
+    "homepage_url":"https://github.com/risonakamo/ssaver",
 
     "permissions":["tabs","activeTab","storage","https://www.youtube.com/watch?v=*"],
 
