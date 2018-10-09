@@ -1,8 +1,8 @@
 {
     "manifest_version":2,
-    "name":"ssaver",
-    "version":"0",
-    "description":"speedrun saver tentativename",
+    "name":"Youtube Video Position Saver",
+    "version":"1.0",
+    "description":"Bookmark Youtube videos to watch later, continuing off at the same time",
 
     "permissions":["tabs","activeTab","storage","https://www.youtube.com/watch?v=*"],
 
@@ -12,5 +12,11 @@
 
     "web_accessible_resources":[
         "popup/yt-hook.js"
-    ]
+    ],
+
+    "icons":{
+        "16":"img/icon-16.png",
+        "48":"img/icon-48.png",
+        "128":"img/icon-128.png"
+    }
 }
