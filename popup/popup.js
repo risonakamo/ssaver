@@ -31,8 +31,9 @@ function checkSite()
 
         else
         {
-            document.querySelector(".bad-site").classList.add("show");
-            main3();
+            chrome.tabs.create({url:"saved/saved.html"});
+            // document.querySelector(".bad-site").classList.add("show");
+            // main3();
         }
     });
 }
