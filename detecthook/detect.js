@@ -1,5 +1,5 @@
-chrome.storage.local.get(null,(data)=>{
-    console.log(data);
-});
+// chrome.storage.local.get(null,(data)=>{
+//     console.log(data);
+// });
 
-console.log("what");
+console.log("hey");
