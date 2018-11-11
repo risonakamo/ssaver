@@ -20,7 +20,8 @@
     ],
 
     "web_accessible_resources":[
-        "popup/yt-hook.js"
+        "popup/yt-hook.js",
+        "img/icon-white.png"
     ],
 
     "icons":{

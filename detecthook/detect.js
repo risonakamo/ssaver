@@ -1,11 +1,20 @@
 var observer=new MutationObserver(checkVideo);
 
-var watchElement;
+var watchElement; //the observe for navigation change element
+var playerElement; //the player container
+
+//the track badge
+var trackBadge=document.createElement("div");
+trackBadge.innerHTML=`<img class="track-badge" style="position:absolute;z-index:10;top:9px;right:14px;height:36px" src="${chrome.runtime.getURL("img/icon-white.png")}">`;
+trackBadge=trackBadge.firstChild;
+
+//wait for watch and player elements to load before continuing
 var tryAttach=setInterval(()=>{
     // watchElement=document.querySelector("#items.ytd-watch-next-secondary-results-renderer"); //side bar
     watchElement=document.querySelector(".title yt-formatted-string.ytd-video-primary-info-renderer"); //video title
+    playerElement=document.querySelector("#container.ytd-player");
 
-    if (!watchElement)
+    if (!watchElement || !playerElement)
     {
         return;
     }
@@ -14,6 +23,8 @@ var tryAttach=setInterval(()=>{
         childList:true,
         characterData:true
     });
+
+    playerElement.appendChild(trackBadge);
 
     checkVideo();
     clearInterval(tryAttach);
@@ -43,16 +54,20 @@ function checkVideo()
 
     //if the video is being tracked do the function
     chrome.storage.local.get(vidId,(data)=>{
-        if (!data[vidId])
-        {
-            return;
-        }
-
-        videoBeingTracked();
+        videoBeingTracked(data[vidId]);
     })
 }
 
-function videoBeingTracked()
+//actions to do if video is in the database
+function videoBeingTracked(yes)
 {
+    if (!yes)
+    {
+        trackBadge.style.display="none";
+    }
 
+    else
+    {
+        trackBadge.style.display=null;
+    }
 }
