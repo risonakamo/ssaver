@@ -5,7 +5,7 @@
     "description":"Bookmark Youtube videos to watch later, continuing off at the same time",
     "homepage_url":"https://github.com/risonakamo/ssaver",
 
-    "permissions":["tabs","activeTab","storage"],
+    "permissions":["tabs","activeTab","storage","webNavigation","https://www.youtube.com/*"],
 
     "browser_action":{
         "default_popup":"popup/popup.html"
@@ -13,7 +13,7 @@
 
     "content_scripts":[
         {
-            "matches":["https://www.youtube.com/watch*"],
+            "matches":["https://www.youtube.com/*"],
             "js":["detecthook/detect.js"],
             "run_at":"document_end"
         }
