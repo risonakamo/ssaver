@@ -1,7 +1,7 @@
 var observer=new MutationObserver(checkVideo);
 
 var watchElement; //the observe for navigation change element
-var playerElement; //the player container
+var playerElement; //the player container the badge should be inserted into
 
 //the track badge
 var trackIcons={
@@ -10,14 +10,16 @@ var trackIcons={
 }
 
 var trackBadge=document.createElement("div");
-trackBadge.innerHTML=`<img class="track-badge" style="position:absolute;z-index:10;top:9px;right:14px;height:36px" src="${trackIcons.white}">`;
+trackBadge.innerHTML=`<img class="track-badge ytp-chrome-bottom" style="position:absolute;z-index:10;top:9px;right:14px;height:36px;width:36px" src="${trackIcons.white}">`;
 trackBadge=trackBadge.firstChild;
 
 //wait for watch and player elements to load before continuing
 var tryAttach=setInterval(()=>{
     // watchElement=document.querySelector("#items.ytd-watch-next-secondary-results-renderer"); //side bar
     watchElement=document.querySelector(".title yt-formatted-string.ytd-video-primary-info-renderer"); //video title
-    playerElement=document.querySelector("#container.ytd-player");
+
+    // playerElement=document.querySelector("#container.ytd-player");
+    playerElement=document.querySelector("#movie_player");
 
     if (!watchElement || !playerElement)
     {
