@@ -11,3 +11,5 @@ window.localStorage.ssaverHookData=JSON.stringify({
     duration:player.getDuration(),
     saveDate:new Date().toString()
 });
+
+document.querySelector(".track-badge").style.display="";
