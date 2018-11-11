@@ -4,8 +4,13 @@ var watchElement; //the observe for navigation change element
 var playerElement; //the player container
 
 //the track badge
+var trackIcons={
+    white:chrome.runtime.getURL("img/icon-white.png"),
+    green:chrome.runtime.getURL("img/icon-green.png")
+}
+
 var trackBadge=document.createElement("div");
-trackBadge.innerHTML=`<img class="track-badge" style="position:absolute;z-index:10;top:9px;right:14px;height:36px" src="${chrome.runtime.getURL("img/icon-white.png")}">`;
+trackBadge.innerHTML=`<img class="track-badge" style="position:absolute;z-index:10;top:9px;right:14px;height:36px" src="${trackIcons.white}">`;
 trackBadge=trackBadge.firstChild;
 
 //wait for watch and player elements to load before continuing
@@ -69,5 +74,15 @@ function videoBeingTracked(yes)
     else
     {
         trackBadge.style.display=null;
+
+        if (yes.done)
+        {
+            trackBadge.src=trackIcons.green;
+        }
+
+        else
+        {
+            trackBadge.src=trackIcons.white;
+        }
     }
 }
