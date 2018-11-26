@@ -76,3 +76,18 @@ function setAllNotDone()
         chrome.storage.local.set(data);
     });
 }
+
+//check all entries and see if theres a vid entry that doesnt match its key,
+//for some reason
+function checkVidIdErrors()
+{
+    chrome.storage.local.get(null,(data)=>{
+        for (var x in data)
+        {
+            if (data[x].videoId!=x)
+            {
+                console.log(data[x]);
+            }
+        }
+    });
+}
