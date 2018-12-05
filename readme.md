@@ -1,3 +1,6 @@
+[![GitHub release](https://img.shields.io/github/release/risonakamo/ssaver.svg)](https://github.com/risonakamo/ssaver/releases)
+![GitHub manifest version](https://img.shields.io/github/manifest-json/v/risonakamo/ssaver.svg)
+
 ## Youtube Watch Later Video Manager*
 *temporary name?
 
