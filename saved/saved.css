@@ -22,6 +22,9 @@ h3 {
   font-size: 15px;
   margin: 0 auto 12px auto;
 }
+.videos {
+  margin-bottom: 50px;
+}
 .video-entry {
   display: flex;
   align-items: center;
@@ -51,7 +54,8 @@ h3 {
 .video-entry .info .names h1 {
   font-size: 21px;
 }
-.video-entry .info .names h2 {
+.video-entry .info .names h2,
+.list-link {
   font-size: 15px;
   margin: 13px 0 9px 0;
   opacity: 0.5;
@@ -119,4 +123,12 @@ h3 {
   display: block;
   width: 50px;
   margin: 5px auto 0px auto;
+}
+.list-link {
+  display: block;
+  width: 125px;
+  font-size: 15px;
+  margin: auto;
+  text-decoration: underline;
+  font-style: italic;
 }

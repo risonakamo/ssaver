@@ -31,6 +31,12 @@ h3
     margin: 0 auto 12px auto;
 }
 
+//main videos body holding element
+.videos
+{
+    margin-bottom: 50px;
+}
+
 //video entry element
 .video-entry
 {
@@ -179,9 +185,24 @@ h3
     }
 }
 
+//top logo img element
 .logo-img
 {
     display: block;
     width: 50px;
     margin: 5px auto 0px auto;
+}
+
+//a link that appears in the middle of the vid list element.
+//currently only used for the show done vids button
+.list-link
+{
+    &:extend(.video-entry .info .names h2);
+
+    display: block;
+    width: 125px;
+    font-size: 15px;
+    margin: auto;
+    text-decoration: underline;
+    font-style: italic;
 }

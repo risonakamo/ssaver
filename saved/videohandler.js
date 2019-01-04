@@ -4,6 +4,7 @@ class VideoHandler extends React.Component {
     super(props);
     this.markDone = this.markDone.bind(this);
     this.state = {//vidData:null* //the video entry data
+      //showDone //whether done videos are being shown
     };
   }
 
@@ -47,13 +48,28 @@ class VideoHandler extends React.Component {
         key: i,
         markDone: this.markDone
       });
-    }), React.createElement("h3", null, "Done Videos"), doneVids.map((x, i) => {
-      return React.createElement(VideoEntry, {
-        data: x,
-        key: i,
-        markDone: this.markDone
-      });
-    }));
+    }), React.createElement("h3", null, "Done Videos"), (() => {
+      if (!this.state.showDone) {
+        return React.createElement("a", {
+          href: "",
+          className: "list-link",
+          onClick: e => {
+            e.preventDefault();
+            this.setState({
+              showDone: 1
+            });
+          }
+        }, "Show done videos");
+      } else {
+        return doneVids.map((x, i) => {
+          return React.createElement(VideoEntry, {
+            data: x,
+            key: i,
+            markDone: this.markDone
+          });
+        });
+      }
+    })());
   }
 
 }

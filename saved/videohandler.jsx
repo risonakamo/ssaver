@@ -8,6 +8,7 @@ class VideoHandler extends React.Component
 
     this.state={
       //vidData:null* //the video entry data
+      //showDone //whether done videos are being shown
     };
   }
 
@@ -57,9 +58,24 @@ class VideoHandler extends React.Component
       })}
 
       <h3>Done Videos</h3>
-      {doneVids.map((x,i)=>{
-        return <VideoEntry data={x} key={i} markDone={this.markDone}/>;
-      })}
+      {(()=>{
+        if (!this.state.showDone)
+        {
+          return (
+            <a href="" className="list-link" onClick={(e)=>{
+              e.preventDefault();
+              this.setState({showDone:1});
+            }}>Show done videos</a>
+          );
+        }
+
+        else
+        {
+          return doneVids.map((x,i)=>{
+            return <VideoEntry data={x} key={i} markDone={this.markDone}/>;
+          });
+        }
+      })()}
     </>);
   }
 }
