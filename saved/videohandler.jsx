@@ -52,7 +52,7 @@ class VideoHandler extends React.Component
     sortVidEntryDate(doneVids);
 
     return (<>
-      <h3>Saved Videos</h3>
+      <h3>Saved Videos <span class="vid-count">{vids.length}</span></h3>
       {vids.map((x,i)=>{
         return <VideoEntry data={x} key={i} markDone={this.markDone}/>;
       })}

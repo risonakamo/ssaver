@@ -42,7 +42,9 @@ class VideoHandler extends React.Component {
 
     sortVidEntryDate(vids);
     sortVidEntryDate(doneVids);
-    return React.createElement(React.Fragment, null, React.createElement("h3", null, "Saved Videos"), vids.map((x, i) => {
+    return React.createElement(React.Fragment, null, React.createElement("h3", null, "Saved Videos ", React.createElement("span", {
+      class: "vid-count"
+    }, vids.length)), vids.map((x, i) => {
       return React.createElement(VideoEntry, {
         data: x,
         key: i,

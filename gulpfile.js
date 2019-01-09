@@ -21,12 +21,12 @@ var reactConfig={
     base:"."
 };
 
-gulp.watch(lessConfig.targets,()=>{
+gulp.watch(lessConfig.targets).on("change",()=>{
     console.log("compliling less");
     gulp.src(lessConfig.targets,{base:lessConfig.base}).pipe(less()).pipe(gulp.dest(lessConfig.base));
 });
 
-gulp.watch(reactConfig.targets,()=>{
+gulp.watch(reactConfig.targets).on("change",()=>{
     console.log("compliling react");
     gulp.src(reactConfig.targets,{base:reactConfig.base})
         .pipe(plumber(defaultPlumber))
