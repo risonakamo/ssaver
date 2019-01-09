@@ -1,7 +1,7 @@
 {
     "manifest_version":2,
     "name":"Youtube Video Position Saver",
-    "version":"1.2.0",
+    "version":"1.2.1",
     "description":"Bookmark Youtube videos to watch later, continuing off at the same time",
     "homepage_url":"https://github.com/risonakamo/ssaver",
 
