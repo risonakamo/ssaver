@@ -86,8 +86,30 @@ function checkVidIdErrors()
         {
             if (data[x].videoId!=x)
             {
-                console.log(data[x]);
+                console.log(x,data[x]);
             }
         }
+    });
+}
+
+//find all storage entries who's key doesnt match the video id and
+//remove them, then put back the videos with the wrong keys with the
+//keys matching the video id
+function fixVidIdErrors()
+{
+    var badIds=[];
+    var correctIds={};
+    chrome.storage.local.get(null,(data)=>{
+        for (var x in data)
+        {
+            if (data[x].videoId!=x)
+            {
+                correctIds[data[x].videoId]=data[x];
+                badIds.push(x);
+            }
+        }
+
+        chrome.storage.local.remove(badIds);
+        chrome.storage.local.set(correctIds);
     });
 }
